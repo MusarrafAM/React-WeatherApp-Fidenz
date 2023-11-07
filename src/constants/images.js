@@ -1,6 +1,6 @@
 import headercloud from "../assets/HeaderCloud.png";
-import Logo from "../assets/Logo.png"
-
+import Logo from "../assets/Logo.png";
+import oneCloud from "../assets/oneCloud.png";
 
 
 
@@ -8,5 +8,7 @@ import Logo from "../assets/Logo.png"
 export default {
   headercloud,
   Logo,
-  
+  oneCloud,
+
+
 };

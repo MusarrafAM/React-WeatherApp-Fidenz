@@ -52,7 +52,7 @@ function App() {
     <div className="App w-full">
       <Header />
       <Body />
-      <Footer />
+      {/* <Footer />   */}
     </div>
   );
 }

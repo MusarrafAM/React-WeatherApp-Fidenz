@@ -24,7 +24,7 @@ const Search = () => {
           value={searchedCity}
           onChange={handleInputChange}
         />
-        <button className="bg-[#6b5dd3] w-[130px] h-[50px] rounded-lg">Add City</button>
+        <button className="bg-[#6b5dd3] w-[130px] h-[50px] rounded-lg hover:bg-purple-600 duration-300 hover:text-black">Add City</button>
       </form>
     </div>
   );

@@ -6,13 +6,13 @@ import Search from "./Search";
 const Header = () => {
   return (
     <div className="">
-      <div className="w-full">
+      <div className="w-full mt-[-100px]">
         <img className="" src={images.headercloud} alt="image of a cloud background" />
       </div>
-      <div className="absolute  right-[48%] top-[10%]">
+      <div className="absolute  left-[40%] top-[50px]">
         <Logo />
       </div>
-      <div className="absolute right-[35%] top-[18%] ">
+      <div className="absolute left-[35%] top-[18%] ">
         <Search />
       </div>
     </div>
