@@ -3,11 +3,15 @@ import { images } from "../constants";
 import Logo from "./Logo";
 import Search from "./Search";
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <div className="">
+    <div className="bg-[#1f2128]">
       <div className="w-full mt-[-100px]">
-        <img className="" src={images.headercloud} alt="image of a cloud background" />
+        <img
+          className=""
+          src={images.headercloud}
+          alt="image of a cloud background"
+        />
       </div>
       <div className="absolute  left-[40%] top-[50px]">
         <Logo />

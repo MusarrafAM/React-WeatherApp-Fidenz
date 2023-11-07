@@ -2,58 +2,84 @@ import React, { useEffect, useState } from "react";
 import citiesData from "./cities.json";
 import axios from "axios";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Body from "./components/Body";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import EachCity from "./pages/EachCity";
 
 function App() {
-  const [cityCode, setCityCode] = useState([]);
-  let allCityDetails = [];
+  const [allCityDetails, setAllCityDetails] = useState([]);
 
   useEffect(() => {
-    citiesData.List.forEach((eachCity) => {
-      setCityCode((prevCityCode) => [...prevCityCode, eachCity.CityCode]);
-    });
-  }, []);
+    const api_key = "59108cb758efbaac0417df79f1863251";
 
-  // Openweathermap
-  const api_key = "59108cb758efbaac0417df79f1863251";
+    const fetchData = async () => {
+      try {
+        const cityDetails = await Promise.all(
+          citiesData.List.map(async (eachCity) => {
+            const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${eachCity.CityCode}&units=metric&appid=${api_key}`;
+            const res = await axios.get(apiUrl);
+            const cityName = res.data.list[0].name;
+            const code = res.data.list[0].sys.country;
+            const description = res.data.list[0].weather[0].description;
+            const temp = Math.round(res.data.list[0].main.temp);
+            const temp_min = Math.round(res.data.list[0].main.temp_min);
+            const temp_max = Math.round(res.data.list[0].main.temp_max);
+            const pressure = res.data.list[0].main.pressure;
+            const humidity = res.data.list[0].main.humidity;
+            const visibility = (res.data.list[0].visibility / 1000).toFixed(1); // toFixed will only show till 1st decimal.
+            const wind_speed = (res.data.list[0].wind.speed).toFixed(1);
+            const wind_degre = res.data.list[0].wind.deg;
+            const sunrise = res.data.list[0].sys.sunrise;
+            const sunset = res.data.list[0].syssunset;
+            const last_Update_time = res.data.list[0].dt;
+            
+            
+            const currentDate = new Date(); // Get cur date and time
+            const month = currentDate.toLocaleString('default', { month: 'short' }); //Get the short version of month
+            const day = currentDate.getDate();
+            var hours = currentDate.getHours();
+            const minutes = currentDate.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Handle midnight (0 hours)
+            const timeString = hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + ampm;
 
-  // Getting Weather details according the list of cityCodes.
-  const getData = () => {
-    cityCode.forEach((eachId) => {
-      const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${eachId},&units=metric&appid=${api_key}`;
-      axios
-        .get(apiUrl)
-        .then((res) => {
-          let cityName = res.data.list[0].name;
-          let description = res.data.list[0].weather[0].description;
-          let temp = res.data.list[0].main.temp;
-          let time = res.data.list[0].dt;
-          let eachCityDetails = {
-            id: eachId,
-            name: cityName,
-            description: description,
-            temp: temp,
-            dt: time,
-          };
-          allCityDetails.push(eachCityDetails);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
-  };
+            const date_Time_String = timeString + ", " + month + " " +  day
+            
+            return {
+              id: eachCity.CityCode,
+              name: cityName,
+              code: code,
+              description: description,
+              temp: temp,
+              temp_min: temp_min,
+              temp_max: temp_max,
+              pressure: pressure,
+              humidity: humidity,
+              visibility: visibility,
+              wind_speed:wind_speed,
+              wind_degre:wind_degre,
+              date_Time_String:date_Time_String,
+              dt: last_Update_time,
+            };
+          })
+        );
+        setAllCityDetails(cityDetails);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
-  // getData(); // Caling the function to get the data from openwhethearmap.
-  console.log(allCityDetails);
+    // fetchData();
+  }, []); // Empty dependency array ensures this effect runs once on mount
 
   return (
-    <div className="App w-full">
-      <Header />
-      <Body />
-      {/* <Footer />   */}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home allCityDetails={allCityDetails} />} />
+        <Route path="colombo" element={<EachCity />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
