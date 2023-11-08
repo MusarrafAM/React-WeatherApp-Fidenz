@@ -98,17 +98,23 @@ function App() {
       }
     };
 
-    // fetchData(); 
+    fetchData(); 
   }, []); // Empty dependency array ensures this effect runs once on mount
-
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Home allCityDetails={allCityDetails} />} />
-        <Route path="colombo" element={<EachCity />} />
+        <Route path={allCityDetails[0]?.name} element={<EachCity allCityDetails={allCityDetails[0]} color="blue-bg"/>} />
+        <Route path={allCityDetails[1]?.name} element={<EachCity allCityDetails={allCityDetails[1]} color="purple-bg"/>} />
+        <Route path={allCityDetails[2]?.name} element={<EachCity allCityDetails={allCityDetails[2]} color="green-bg"/>} />
+        <Route path={allCityDetails[3]?.name} element={<EachCity allCityDetails={allCityDetails[3]} color="orange-bg"/>} />
+        <Route path={allCityDetails[4]?.name} element={<EachCity allCityDetails={allCityDetails[4]} color="red-bg"/>} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
+
+// --------------------------------------------------------------------
