@@ -16,7 +16,7 @@ const Header = () => {
       <div className="absolute left-[30%]  lg:left-[40%] top-[50px]">
         <Logo />
       </div>
-      <div className="absolute left-[20%] lg:left-[35%] top-[16%] lg:top-[22%] ">
+      <div className="absolute left-[10%] lg:left-[35%] top-[16%] lg:top-[22%] ">
         <Search />
       </div>
     </div>
