@@ -15,7 +15,7 @@ function App() {
     const fetchData = async () => {
       try {
         const cityDetails = await Promise.all(
-          citiesData.List.map(async (eachCity) => {
+          citiesData.List.map(async (eachCity, index) => {
             const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${eachCity.CityCode}&units=metric&appid=${api_key}`;
             const res = await axios.get(apiUrl);
             const cityName = res.data.list[0].name;
@@ -32,6 +32,7 @@ function App() {
             const sunrise_timestamp  = res.data.list[0].sys.sunrise;
             const sunset_timestamp  = res.data.list[0].sys.sunset;
             const last_Update_time = res.data.list[0].dt;
+            const weatherIcon = res.data.list[0].weather[0].icon;
 
             // Get time using the timezone, and Unixtimestamp
             const timezoneOffsetSeconds  = res.data.list[0].sys.timezone;
@@ -85,17 +86,19 @@ function App() {
               date_Time_String:date_Time_String,
               sunrise:formattedTime_sunrise,
               sunset:formattedTime_sunset,
+              weatherIcon:weatherIcon,
               dt: last_Update_time,
             };
           })
         );
         setAllCityDetails(cityDetails);
+        console.log(allCityDetails[0].bgcolor);
       } catch (err) {
         console.error(err);
       }
     };
 
-    fetchData();
+    // fetchData(); 
   }, []); // Empty dependency array ensures this effect runs once on mount
 
   return (

@@ -2,7 +2,6 @@ import React from "react";
 import { images } from "../constants";
 import { AiOutlineClose } from "react-icons/ai";
 import { RiSendPlaneLine } from "react-icons/ri";
-import { BsClouds } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
@@ -11,21 +10,23 @@ const WeatherCard = (props) => {
   // const cityName = props.allCityDetails?.name || "City Name Not Available";
   return (
     // <Link to={`/products/${product.id}`}>More info</Link>
+    // bg-[${props.color || "#6149cb"}]
 
-    <div className="h-[370px] w-[550px] ml-[350px] bg-[#378de7] rounded-lg relative">
-      <Link to={"/colombo"}>
+    <div className={`h-[370px] w-[550px] mx-auto rounded-lg relative ${props.color ? props.color : 'blue-bg'}`}>
+      <Link to={`/${props.allCityDetails?.name}`}>
         <div className="top-part h-[60%] flex items-center justify-around">
           <AiOutlineClose className="absolute top-2 right-2 hover:cursor-pointer" />
           <img
-            className="h-[100%] w-[100%] pointer-events-none"
+            className=" pointer-events-none"
             src={images.oneCloud}
             alt=""
           />
           <div className="absolute left-10">
             <h3 className="text-3xl font-bold ">{props.allCityDetails?.name}, {props.allCityDetails?.code}</h3>
-            <p className="text-center text-sm mb-8 pt-2">{props.allCityDetails?.date_Time_String}</p>
+            <p className="text-center text-sm mb-6 pt-2">{props.allCityDetails?.date_Time_String}</p>
             <div className="flex gap-[15px]">
-              <BsClouds size={30} />
+              {/* <BsClouds size={30} /> */}
+              <img src={`https://openweathermap.org/img/wn/${props.allCityDetails?.weatherIcon}.png`} alt="" />
               <p className="my-auto text-lg ">{props.allCityDetails?.description}</p>
             </div>
           </div>

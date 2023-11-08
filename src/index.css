@@ -16,3 +16,23 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.red-bg {
+  background-color: #9c3939;
+}
+
+.orange-bg {
+  background-color: #de934e;
+}
+
+.green-bg {
+  background-color: #40b681;
+}
+
+.purple-bg {
+  background-color: #6149cb;
+}
+
+.blue-bg {
+  background-color: #378de7;
+}
