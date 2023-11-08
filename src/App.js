@@ -117,4 +117,4 @@ function App() {
 export default App;
 
 
-// --------------------------------------------------------------------
+// This is before localStorage cashing mechanism
