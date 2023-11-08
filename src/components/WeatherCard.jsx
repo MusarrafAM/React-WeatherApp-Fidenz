@@ -12,7 +12,7 @@ const WeatherCard = (props) => {
     // <Link to={`/products/${product.id}`}>More info</Link>
     // bg-[${props.color || "#6149cb"}]
 
-    <div className={`lg:h-[370px] lg:w-[550px] h-[300px] w-[450px] mb-[50px] lg:mb-0 mx-auto rounded-lg relative ${props.color ? props.color : 'blue-bg'}`}>
+    <div className={`lg:h-[370px] lg:w-[550px] h-[300px] w-[400px] mb-[50px] lg:mb-0 mx-auto rounded-lg relative ${props.color ? props.color : 'blue-bg'}`}>
       <Link to={`/${props.allCityDetails?.name}`}>
         <div className="top-part h-[60%] flex items-center justify-around">
           <AiOutlineClose className="absolute top-2 right-2 hover:cursor-pointer" />
