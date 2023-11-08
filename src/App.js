@@ -161,6 +161,7 @@ function App() {
         <Route path={allCityDetails[2]?.name} element={<EachCity allCityDetails={allCityDetails[2]} color="green-bg" />}/>
         <Route path={allCityDetails[3]?.name} element={<EachCity allCityDetails={allCityDetails[3]} color="orange-bg" />}/>
         <Route path={allCityDetails[4]?.name} element={<EachCity allCityDetails={allCityDetails[4]} color="red-bg" />}/>
+        <Route path={allCityDetails[5]?.name} element={<EachCity allCityDetails={allCityDetails[5]} color="blue-bg" />}/>
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

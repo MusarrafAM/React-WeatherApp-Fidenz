@@ -11,6 +11,7 @@ const Body = (props) => {
         <WeatherCard allCityDetails={props.allCityDetails[2]} color="green-bg"/>
         <WeatherCard allCityDetails={props.allCityDetails[3]} color="orange-bg"/>
         <WeatherCard allCityDetails={props.allCityDetails[4]} color="red-bg"/>
+        <WeatherCard allCityDetails={props.allCityDetails[5]} color="blue-bg"/>
 
       </div>
     </div>
