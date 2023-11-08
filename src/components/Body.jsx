@@ -13,6 +13,14 @@ const Body = (props) => {
         <WeatherCard allCityDetails={props.allCityDetails[4]} color="red-bg"/>
         <WeatherCard allCityDetails={props.allCityDetails[5]} color="blue-bg"/>
 
+        
+        {/* Easy Method */}
+        {/* {Array(6).fill().map((_, i) => (
+      <WeatherCard key={i} allCityDetails={props.allCityDetails[i]} color="blue-bg" />
+        ))} */}
+
+
+
       </div>
     </div>
   );
