@@ -51,8 +51,8 @@ const WeatherCard = (props) => {
           <div className="virticalRule w-[3px] h-[60px] bg-[#505446]"></div>
 
           <div className="3rd-col text-right">
-            <p className="pb-1">Sunrise: 6.05am</p>
-            <p className="pt-1">Sunset: 6.05am</p>
+            <p className="pb-1">Sunrise: {props.allCityDetails?.sunrise}</p>
+            <p className="pt-1">Sunset: {props.allCityDetails?.sunset}</p>
           </div>
         </div>
       </Link>
