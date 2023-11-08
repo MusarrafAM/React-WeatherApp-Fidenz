@@ -5,6 +5,8 @@ import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import EachCity from "./pages/EachCity";
+import Error from "./pages/Error";
+
 
 function App() {
   const [allCityDetails, setAllCityDetails] = useState([]);
@@ -98,7 +100,7 @@ function App() {
       }
     };
 
-    fetchData(); 
+    // fetchData(); 
   }, []); // Empty dependency array ensures this effect runs once on mount
   return (
     <BrowserRouter>
@@ -109,6 +111,7 @@ function App() {
         <Route path={allCityDetails[2]?.name} element={<EachCity allCityDetails={allCityDetails[2]} color="green-bg"/>} />
         <Route path={allCityDetails[3]?.name} element={<EachCity allCityDetails={allCityDetails[3]} color="orange-bg"/>} />
         <Route path={allCityDetails[4]?.name} element={<EachCity allCityDetails={allCityDetails[4]} color="red-bg"/>} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

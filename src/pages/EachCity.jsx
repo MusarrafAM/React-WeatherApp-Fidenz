@@ -41,6 +41,8 @@ const EachCity = (props) => {
             <div className="text-center">
               <div className="pl-[40%]">
               <img src={`https://openweathermap.org/img/wn/${props.allCityDetails?.weatherIcon}.png`} alt="" />
+              {/* <img src={`https://openweathermap.org/img/wn/${props.allCityDetails?.weatherIcon}@2x.png`} alt="" /> */}
+
               </div>
               <p className="my-auto text-lg pt-4 max-w-[150px]">{props.allCityDetails?.description}</p>
             </div>

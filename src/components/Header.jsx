@@ -5,10 +5,10 @@ import Search from "./Search";
 
 const Header = () => {
   return (
-    <div className="bg-[#1f2128]">
+    <div className="bg-[#1f2128] ">
       <div className="w-full lg:mt-[-100px]">
         <img
-          className=""
+          className="absolute"
           src={images.headercloud}
           alt="image of a cloud background"
         />
