@@ -156,16 +156,21 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home allCityDetails={allCityDetails} />} />
-        <Route path={allCityDetails[0]?.name} element={<EachCity allCityDetails={allCityDetails[0]} color="blue-bg" />}/>
-        <Route path={allCityDetails[1]?.name} element={<EachCity allCityDetails={allCityDetails[1]} color="purple-bg" />}/>
-        <Route path={allCityDetails[2]?.name} element={<EachCity allCityDetails={allCityDetails[2]} color="green-bg" />}/>
-        <Route path={allCityDetails[3]?.name} element={<EachCity allCityDetails={allCityDetails[3]} color="orange-bg" />}/>
-        <Route path={allCityDetails[4]?.name} element={<EachCity allCityDetails={allCityDetails[4]} color="red-bg" />}/>
-        <Route path={allCityDetails[5]?.name} element={<EachCity allCityDetails={allCityDetails[5]} color="blue-bg" />}/>
+
+        {/* Dynamically render each city */}
+        {allCityDetails.map((city, index) => (
+          <Route key={index} path={city.name} element={<EachCity allCityDetails={city} color={getColorByIndex(index)} />}/>
+        ))}
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
+}
+
+// Generate colour for each card
+function getColorByIndex(index) {
+  const colors = ['blue-bg', 'purple-bg', 'green-bg', 'orange-bg', 'red-bg'];
+  return colors[index % colors.length];
 }
 
 export default App;
