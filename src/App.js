@@ -18,7 +18,7 @@ function App() {
   const fetchCityDetails = async (cityId) => {
 
     try {
-      const weatherDetails  = await APIHelper.getWeatherDetails(cityId)
+      const weatherDetails  = await APIHelper.getWeatherDetails(cityId) // Call getWeatherDetails function from api folder
       const cityName = weatherDetails.name;
       const code = weatherDetails.sys.country;
       const description = weatherDetails.weather[0].description;
@@ -166,7 +166,7 @@ function App() {
 
         {/* Dynamically render each city */}
         {allCityDetails.map((city, index) => (
-          <Route key={index} path={city.name} element={<EachCity allCityDetails={city} color={getColorByIndex(index)} />}/>
+          <Route key={index} path={city?.name} element={<EachCity allCityDetails={city} color={getColorByIndex(index)} />}/>
         ))}
         <Route path="*" element={<Error />} />
       </Routes>
