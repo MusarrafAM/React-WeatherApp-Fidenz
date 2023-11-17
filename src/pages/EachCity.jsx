@@ -4,7 +4,6 @@ import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { RiSendPlaneLine } from "react-icons/ri";
-import { BsClouds } from "react-icons/bs";
 import Footer from "../components/Footer";
 
 const EachCity = (props) => {
