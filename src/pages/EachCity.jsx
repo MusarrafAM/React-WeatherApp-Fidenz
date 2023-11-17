@@ -21,7 +21,7 @@ const EachCity = (props) => {
       </div>
 
       {/* Single Weatcer Card */}
-      <div className={`lg:h-[470px] lg:w-[900px] h-[300px] w-[500px]  ${props.color ? props.color : 'blue-bg'} rounded-lg absolute z-20 top-[200px] absolute-center`}>
+      <div className={`lg:h-[470px] lg:w-[900px] h-[300px] md:w-[500px] w-[420px]   ${props.color ? props.color : 'blue-bg'} rounded-lg absolute z-20 top-[200px] absolute-center`}>
         <div className="top-part h-[60%] flex items-center justify-around">
           <Link to="/">
             <MdOutlineArrowBack
@@ -57,7 +57,7 @@ const EachCity = (props) => {
         </div>
 
         <div className="bottom-part bg-[#373b47] h-[40%] rounded-b-lg flex justify-around items-center">
-          <div className="1st-col ml-[50px]">
+          <div className="1st-col lg:ml-[50px] ml-[20px]">
             <p>Pressure: {props.allCityDetails?.pressure}hPa</p>
             <p className="py-1">Humidity: {props.allCityDetails?.humidity}%</p>
             <p>Visibility: {props.allCityDetails?.visibility}km</p>
@@ -70,7 +70,7 @@ const EachCity = (props) => {
           </div>
           <div className="virticalRule w-[3px] h-[60px] bg-[#505446]"></div>
 
-          <div className="3rd-col text-right mr-[50px]">
+          <div className="3rd-col text-right lg:mr-[50px] mr-[20px]">
             <p className="pb-1">Sunrise: {props.allCityDetails?.sunrise}</p>
             <p className="pt-1">Sunset: {props.allCityDetails?.sunset}</p>
           </div>

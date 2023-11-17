@@ -9,7 +9,7 @@ const Logo = () => {
         src={images.Logo}
         alt="Logo of the weather app"
       />
-      <h2 className="text-white flex items-center text-3xl">Weather App</h2>
+      <h2 className="text-white flex items-center md:text-3xl text-2xl">Weather App</h2>
     </div>
   );
 };

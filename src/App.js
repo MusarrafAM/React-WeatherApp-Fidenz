@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import EachCity from "./pages/EachCity";
 import Error from "./pages/Error";
 
+import colors from "./constants/colours";  // Import from the constant file.
+
 function App() {
   const [allCityDetails, setAllCityDetails] = useState([]);
   const fetchCityDetails = async (cityId) => {
@@ -169,7 +171,6 @@ function App() {
 
 // Generate colour for each card
 function getColorByIndex(index) {
-  const colors = ['blue-bg', 'purple-bg', 'green-bg', 'orange-bg', 'red-bg'];
   return colors[index % colors.length];
 }
 

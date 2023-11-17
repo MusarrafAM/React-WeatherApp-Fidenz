@@ -1,6 +1,9 @@
 import React from "react";
 import WeatherCard from "./WeatherCard";
 
+import colors from "../constants/colours";  // Import from the constant file.
+
+
 const Body = (props) => {
 
   return (
@@ -20,7 +23,6 @@ const Body = (props) => {
 };
 
 function getColorByIndex(index) {
-  const colors = ['blue-bg', 'purple-bg', 'green-bg', 'orange-bg', 'red-bg'];
   return colors[index % colors.length];
 }
 

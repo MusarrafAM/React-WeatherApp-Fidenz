@@ -13,10 +13,10 @@ const Header = () => {
           alt="image of a cloud background"
         />
       </div>
-      <div className="absolute left-[30%]  lg:left-[40%] top-[50px]">
+      <div className="absolute-horizontal-center top-[50px]">
         <Logo />
       </div>
-      <div className="absolute left-[15%] lg:left-[35%] top-[16%] lg:top-[22%] ">
+      <div className="absolute-horizontal-center top-[26%] lg:top-[22%] ">
         <Search />
       </div>
     </div>
