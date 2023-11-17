@@ -10,10 +10,8 @@ import Error from "./pages/Error";
 function App() {
   const [allCityDetails, setAllCityDetails] = useState([]);
   const fetchCityDetails = async (cityId) => {
-    // const api_key = process.env.REACT_APP_WEATHER_API_KEY;
-    
 
-    const api_key = "59108cb758efbaac0417df79f1863251"; // Getting api key from .env file
+    const api_key = process.env.REACT_APP_WEATHER_API_KEY; // Getting api key from .env file
     const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${cityId}&units=metric&appid=${api_key}`;
 
     try {
