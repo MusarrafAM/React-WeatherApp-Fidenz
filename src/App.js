@@ -103,6 +103,8 @@ function App() {
       if (error.message.includes("No weather details found")) {
         console.error("No weather details found for the specified city ID.");
         return null;
+      }else{
+        console.error("An error occurred while fetching weather details:", error);
       }
     }
   };
