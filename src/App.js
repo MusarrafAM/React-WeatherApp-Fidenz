@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import citiesData from "./cities.json";
-import axios from "axios";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -8,34 +7,33 @@ import EachCity from "./pages/EachCity";
 import Error from "./pages/Error";
 
 import colors from "./constants/colours";  // Import from the constant file.
+import APIHelper from "./api/APIHelper"; // Import the APIHelper module
+
 
 function App() {
   const [allCityDetails, setAllCityDetails] = useState([]);
+  
   const fetchCityDetails = async (cityId) => {
-
-    const api_key = process.env.REACT_APP_WEATHER_API_KEY; // Getting api key from .env file
-    const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${cityId}&units=metric&appid=${api_key}`;
-
     try {
-      const res = await axios.get(apiUrl);
-      const cityName = res.data.list[0].name;
-      const code = res.data.list[0].sys.country;
-      const description = res.data.list[0].weather[0].description;
-      const temp = Math.round(res.data.list[0].main.temp);
-      const temp_min = Math.round(res.data.list[0].main.temp_min);
-      const temp_max = Math.round(res.data.list[0].main.temp_max);
-      const pressure = res.data.list[0].main.pressure;
-      const humidity = res.data.list[0].main.humidity;
-      const visibility = (res.data.list[0].visibility / 1000).toFixed(1); // toFixed will only show till 1st decimal.
-      const wind_speed = res.data.list[0].wind.speed.toFixed(1);
-      const wind_degre = res.data.list[0].wind.deg;
-      const sunrise_timestamp = res.data.list[0].sys.sunrise;
-      const sunset_timestamp = res.data.list[0].sys.sunset;
-      const last_Update_time = res.data.list[0].dt;
-      const weatherIcon = res.data.list[0].weather[0].icon;
+      const weatherDetails  = await  APIHelper.getWeatherDetails(cityId)
+      const cityName = weatherDetails.name;
+      const code = weatherDetails.sys.country;
+      const description = weatherDetails.weather[0].description;
+      const temp = Math.round(weatherDetails.main.temp);
+      const temp_min = Math.round(weatherDetails.main.temp_min);
+      const temp_max = Math.round(weatherDetails.main.temp_max);
+      const pressure = weatherDetails.main.pressure;
+      const humidity = weatherDetails.main.humidity;
+      const visibility = (weatherDetails.visibility / 1000).toFixed(1); // toFixed will only show till 1st decimal.
+      const wind_speed = weatherDetails.wind.speed.toFixed(1);
+      const wind_degre = weatherDetails.wind.deg;
+      const sunrise_timestamp = weatherDetails.sys.sunrise;
+      const sunset_timestamp = weatherDetails.sys.sunset;
+      const last_Update_time = weatherDetails.dt;
+      const weatherIcon = weatherDetails.weather[0].icon;
 
       // Get time using the timezone, and Unixtimestamp
-      const timezoneOffsetSeconds = res.data.list[0].sys.timezone;
+      const timezoneOffsetSeconds = weatherDetails.sys.timezone;
 
       //Create a datetime object from the timestamp
       //Sunrise
