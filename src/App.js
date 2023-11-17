@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import citiesData from "./cities.json";
+// import axios from "axios";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import EachCity from "./pages/EachCity";
 import Error from "./pages/Error";
+
 
 import colors from "./constants/colours";  // Import from the constant file.
 import APIHelper from "./api/APIHelper"; // Import the APIHelper module
@@ -14,8 +16,9 @@ function App() {
   const [allCityDetails, setAllCityDetails] = useState([]);
   
   const fetchCityDetails = async (cityId) => {
+
     try {
-      const weatherDetails  = await  APIHelper.getWeatherDetails(cityId)
+      const weatherDetails  = await APIHelper.getWeatherDetails(cityId)
       const cityName = weatherDetails.name;
       const code = weatherDetails.sys.country;
       const description = weatherDetails.weather[0].description;
@@ -96,9 +99,11 @@ function App() {
         dt: last_Update_time,
       };
       return cityDetail;
-    } catch (err) {
-      console.error(err);
-      return null;
+    } catch (error) {
+      if (error.message.includes("No weather details found")) {
+        console.error("No weather details found for the specified city ID.");
+        return null;
+      }
     }
   };
 
