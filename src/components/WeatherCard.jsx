@@ -17,7 +17,7 @@ const WeatherCard = (props) => {
         <div className="top-part h-[60%] flex items-center justify-around">
           <AiOutlineClose className="absolute top-2 right-2 hover:cursor-pointer" />
           <img
-            className=" pointer-events-none"
+            className="w-[100%] h-[100%] object-fill pointer-events-none"
             src={images.oneCloud}
             alt=""
           />
