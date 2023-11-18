@@ -1,3 +1,6 @@
+# Before run the App create an .env file at the root folder then put the api key like below
+## REACT_APP_WEATHER_API_KEY=Your_Api_Key
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
