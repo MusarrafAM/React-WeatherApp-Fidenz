@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import citiesData from "./cities.json";
-// import axios from "axios";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
