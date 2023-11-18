@@ -11,12 +11,12 @@ const EachCity = (props) => {
     <div className="h-screen bg-[#1f2128] text-white">
       <div className="w-full lg:mt-[-100px]">
         <img
-          className="z-10 absolute"
+          className="z-10 absolute w-[100%] h-[75%] md:w-auto md:h-auto object-cover"
           src={images.headercloud}
-          alt="image of a cloud background"
+          alt="cloud background"
         />
       </div>
-      <div className="absolute z-20 left-[30%] lg:left-[40%] top-[50px]">
+      <div className="absolute z-20 absolute-horizontal-center top-[50px]">
         <Logo />
       </div>
 

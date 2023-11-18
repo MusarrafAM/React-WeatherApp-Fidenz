@@ -8,9 +8,9 @@ const Header = () => {
     <div className="bg-[#1f2128] ">
       <div className="w-full lg:mt-[-100px]">
         <img
-          className="absolute"
+          className="absolute w-[100%] h-[100%] md:w-auto md:h-auto object-cover"
           src={images.headercloud}
-          alt="image of a cloud background"
+          alt="cloud background"
         />
       </div>
       <div className="absolute-horizontal-center top-[50px]">

@@ -42,3 +42,17 @@
 .blue-bg {
   background-color: #378de7;
 }
+
+
+
+@media screen and (max-width: 1180px) {
+
+  /* This is inside body */
+  .weatherCardsContainer {  
+    display: block !important;
+  }
+
+  .weatherCard{
+    margin-bottom: 50px !important;
+  }
+}
