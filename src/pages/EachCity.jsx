@@ -21,7 +21,7 @@ const EachCity = (props) => {
       </div>
 
       {/* Single Weatcer Card */}
-      <div className={`lg:h-[470px] lg:w-[900px] h-[300px] md:w-[500px] w-[420px]   ${props.color ? props.color : 'blue-bg'} rounded-lg absolute z-20 top-[200px] absolute-center`}>
+      <div className={`lg:h-[470px] lg:w-[900px] md:w-[500px] h-[300px] w-[380px]   ${props.color ? props.color : 'blue-bg'} rounded-lg absolute z-20 top-[200px] absolute-center`}>
         <div className="top-part h-[60%] flex items-center justify-around">
           <Link to="/">
             <MdOutlineArrowBack
@@ -31,33 +31,33 @@ const EachCity = (props) => {
           </Link>
 
           <div className="absolute lg:left-[40%] lg:top-[4%] top-[1%]">
-            <h3 className="text-3xl font-bold ">
+            <h3 className="md:text-3xl text-2xl font-bold ">
               {props.allCityDetails?.name}, {props.allCityDetails?.code}
             </h3>
-            <p className="text-center text-sm mb-8 lg:pt-2">{props.allCityDetails?.date_Time_String}</p>
+            <p className="text-center md:text-sm text-xs mb-8 lg:pt-2">{props.allCityDetails?.date_Time_String}</p>
           </div>
-          <div className="absolute left-[28%] lg:left-[35%] top-[30%]">
+          <div className="absolute left-[15%] lg:left-[25%] top-[15%] lg:top-[22%]">
             <div className="text-center">
-              <div className="pl-[40%]">
-              <img src={`https://openweathermap.org/img/wn/${props.allCityDetails?.weatherIcon}.png`} alt="" />
+              <div className="pl-[20%]">
+              <img src={`https://openweathermap.org/img/wn/${props.allCityDetails?.weatherIcon}@2x.png`} alt="" />
               {/* <img src={`https://openweathermap.org/img/wn/${props.allCityDetails?.weatherIcon}@2x.png`} alt="" /> */}
 
               </div>
-              <p className="my-auto text-lg pt-4 max-w-[150px]">{props.allCityDetails?.description}</p>
+              <p className="my-auto md:text-lg ">{props.allCityDetails?.description}</p>
             </div>
           </div>
 
           <div className="virticalRule absolute w-[1px] h-[80px] lg:h-[120px] top-[28%] lg:top-[25%] bg-white"></div>
 
           <div className="absolute right-[22%] lg:right-[32%] top-[24%]">
-            <h2 className="text-5xl font-medium lg:mb-6 mb-2">{props.allCityDetails?.temp}&#176;c</h2>
-            <p className="text-center">Temp Min: {props.allCityDetails?.temp_min}&#176;c</p>
-            <p className="text-center">Temp Max: {props.allCityDetails?.temp_max}&#176;c</p>
+            <h2 className="md:text-5xl text-4xl font-medium lg:mb-6 mb-2">{props.allCityDetails?.temp}&#176;c</h2>
+            <p className="text-center text-sm md:text-base">Temp Min: {props.allCityDetails?.temp_min}&#176;c</p>
+            <p className="text-center text-sm md:text-base">Temp Max: {props.allCityDetails?.temp_max}&#176;c</p>
           </div>
         </div>
 
-        <div className="bottom-part bg-[#373b47] h-[40%] rounded-b-lg flex justify-around items-center">
-          <div className="1st-col lg:ml-[50px] ml-[20px]">
+        <div className="bottom-part bg-[#373b47] h-[40%] rounded-b-lg flex justify-around items-center text-sm md:text-base">
+          <div className="1st-col lg:ml-[50px] ml-[15px] ">
             <p>Pressure: {props.allCityDetails?.pressure}hPa</p>
             <p className="py-1">Humidity: {props.allCityDetails?.humidity}%</p>
             <p>Visibility: {props.allCityDetails?.visibility}km</p>
@@ -70,7 +70,7 @@ const EachCity = (props) => {
           </div>
           <div className="virticalRule w-[3px] h-[60px] bg-[#505446]"></div>
 
-          <div className="3rd-col text-right lg:mr-[50px] mr-[20px]">
+          <div className="3rd-col text-right lg:mr-[50px] mr-[15px]">
             <p className="pb-1">Sunrise: {props.allCityDetails?.sunrise}</p>
             <p className="pt-1">Sunset: {props.allCityDetails?.sunset}</p>
           </div>
