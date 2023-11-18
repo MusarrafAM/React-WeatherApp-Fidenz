@@ -38,32 +38,34 @@ function App() {
       // Get time using the timezone, and Unixtimestamp
       const timezoneOffsetSeconds = weatherDetails.sys.timezone;
 
-      //Create a datetime object from the timestamp
-      //Sunrise
-      const date_sunrise = new Date(
-        (sunrise_timestamp + timezoneOffsetSeconds) * 1000
-      ); // Convert seconds to milliseconds
-      const hours_sr = date_sunrise.getHours();
-      const minutes_sr = date_sunrise.getMinutes();
-      const ampm_sr = hours_sr >= 12 ? "PM" : "AM";
-      const formattedHours_sr = (hours_sr % 12 || 12)
-        .toString()
-        .padStart(2, "0"); // Convert 0 to 12 for AM, leave 12 as it is
-      const formattedMinutes_sr = minutes_sr.toString().padStart(2, "0");
-      const formattedTime_sunrise = `${formattedHours_sr}:${formattedMinutes_sr} ${ampm_sr}`;
+      // Create a datetime object from the timestamp
+      // Sunrise
+      const date_sunrise = new Date(sunrise_timestamp * 1000); // Convert seconds to milliseconds
 
-      //Sunset
-      const date_sunset = new Date(
-        (sunset_timestamp + timezoneOffsetSeconds) * 1000
-      ); // Convert seconds to milliseconds
-      const hours_ss = date_sunset.getHours();
-      const minutes_ss = date_sunset.getMinutes();
-      const ampm_ss = hours_ss >= 12 ? "PM" : "AM";
-      const formattedHours_ss = (hours_ss % 12 || 12)
-        .toString()
-        .padStart(2, "0"); // Convert 0 to 12 for AM, leave 12 as it is
-      const formattedMinutes_ss = minutes_ss.toString().padStart(2, "0");
-      const formattedTime_sunset = `${formattedHours_ss}:${formattedMinutes_ss} ${ampm_ss}`;
+      // Add the timezone offset in milliseconds
+      const date_sunrise_with_offset = new Date(date_sunrise.getTime() + timezoneOffsetSeconds * 1000);
+
+      // Format the sunrise time
+      const formattedTime_sunrise = date_sunrise_with_offset.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+        timeZone: 'UTC' // Set the desired time zone
+      });
+
+      // Sunset
+      const date_sunset = new Date(sunset_timestamp * 1000); // Convert seconds to milliseconds
+
+      // Add the timezone offset in milliseconds
+      const date_sunset_with_offset = new Date(date_sunset.getTime() + timezoneOffsetSeconds * 1000);
+
+      // Format the sunset time
+      const formattedTime_sunset = date_sunset_with_offset.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+        timeZone: 'UTC' // Set the desired time zone
+      });
 
       //Date and current time
       const currentDate = new Date(); // Get cur date and time
