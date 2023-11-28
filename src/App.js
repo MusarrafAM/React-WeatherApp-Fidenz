@@ -7,7 +7,7 @@ import EachCity from "./pages/EachCity";
 import Error from "./pages/Error";
 
 
-import colors from "./constants/colours";  // Import from the constant file.
+import getColorByIndex from "./utils/getColors";
 import APIHelper from "./api/APIHelper"; // Import the APIHelper module
 
 
@@ -173,11 +173,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
-
-// Generate colour for each card
-function getColorByIndex(index) {
-  return colors[index % colors.length];
 }
 
 export default App;

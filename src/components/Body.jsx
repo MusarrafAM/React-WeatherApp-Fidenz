@@ -1,7 +1,7 @@
 import React from "react";
 import WeatherCard from "./WeatherCard";
 
-import colors from "../constants/colours";  // Import from the constant file.
+import getColorByIndex from "../utils/getColors";
 
 
 const Body = (props) => {
@@ -21,10 +21,5 @@ const Body = (props) => {
     </div>
   );
 };
-
-function getColorByIndex(index) {
-  return colors[index % colors.length];
-}
-
 
 export default Body;
