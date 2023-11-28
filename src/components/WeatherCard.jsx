@@ -1,7 +1,7 @@
 import React from "react";
-import { images } from "../constants";
 import { AiOutlineClose } from "react-icons/ai";
 import { RiSendPlaneLine } from "react-icons/ri";
+import oneCloud from "../assets/oneCloud.png"
 
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const WeatherCard = (props) => {
           <AiOutlineClose className="absolute top-2 right-2 hover:cursor-pointer" />
           <img
             className="w-[100%] h-[100%] object-fill pointer-events-none"
-            src={images.oneCloud}
+            src={oneCloud}
             alt=""
           />
           <div className="absolute left-10">

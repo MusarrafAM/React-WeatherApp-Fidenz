@@ -1,7 +1,7 @@
 import React from "react";
-import { images } from "../constants";
 import Logo from "./Logo";
 import Search from "./Search";
+import headerCloud from "../assets/headerCloud.png"
 
 const Header = () => {
   return (
@@ -9,7 +9,7 @@ const Header = () => {
       <div className="w-full lg:mt-[-100px]">
         <img
           className="absolute w-[100%] h-[100%] md:w-auto md:h-auto object-cover"
-          src={images.headercloud}
+          src={headerCloud}
           alt="cloud background"
         />
       </div>

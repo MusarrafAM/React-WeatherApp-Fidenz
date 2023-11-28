@@ -9,9 +9,9 @@ import getColorByIndex from "./utils/getColors";
 import getFormattedTime from "./utils/getFormatedTime";
 import getCurrentDateTimeString from "./utils/getCurrentDateTimeString";
 import getCachedCityDetails from "./utils/getCachedCityDetails";
+import setCachedCityDetails from "./utils/setCachedCityDetails"
 // Import the APIHelper module
 import APIHelper from "./api/APIHelper"; 
-
 
 function App() {
   const [allCityDetails, setAllCityDetails] = useState([]);
@@ -19,7 +19,6 @@ function App() {
   const fetchCityDetails = async (cityId) => {
     try {
       const weatherDetails  = await APIHelper.getWeatherDetails(cityId) // Call getWeatherDetails function from api folder
-
       const cityDetail = {
         id: weatherDetails.sys.country,
         name: weatherDetails.name,
@@ -50,40 +49,28 @@ function App() {
     }
   };
 
-  
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const cityDetails = await Promise.all(
           citiesData.List.map(async (eachCity) => {
             const cachedCityDetails = getCachedCityDetails(eachCity.CityCode);
-
             if (cachedCityDetails) {
               return cachedCityDetails;
             } else {
               const newCityDetail = await fetchCityDetails(eachCity.CityCode);
-
               if (newCityDetail) {
-                localStorage.setItem(
-                  `city_${eachCity.CityCode}`,
-                  JSON.stringify({
-                    data: newCityDetail,
-                    timestamp: new Date().getTime(),
-                  })
-                );
+                setCachedCityDetails(eachCity.CityCode, newCityDetail);
                 return newCityDetail;
               }
             }
           })
         );
-
         setAllCityDetails(cityDetails);
       } catch (err) {
         console.error(err);
       }
     };
-
     fetchData();
   }, []);
 
@@ -91,7 +78,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home allCityDetails={allCityDetails} />} />
-
         {/* Dynamically render each city */}
         {allCityDetails.map((city, index) => (
           <Route key={index} path={city?.name} element={<EachCity allCityDetails={city} color={getColorByIndex(index)} />}/>
@@ -103,5 +89,3 @@ function App() {
 }
 
 export default App;
-
-

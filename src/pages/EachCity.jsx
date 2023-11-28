@@ -1,10 +1,10 @@
 import React from "react";
-import { images } from "../constants";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { RiSendPlaneLine } from "react-icons/ri";
 import Footer from "../components/Footer";
+import headerCloud from "../assets/headerCloud.png"
 
 const EachCity = (props) => {
   return (
@@ -12,7 +12,7 @@ const EachCity = (props) => {
       <div className="w-full lg:mt-[-100px]">
         <img
           className="z-10 absolute w-[100%] h-[75%] md:w-auto md:h-auto object-cover"
-          src={images.headercloud}
+          src={headerCloud}
           alt="cloud background"
         />
       </div>
