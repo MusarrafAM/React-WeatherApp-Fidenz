@@ -8,6 +8,7 @@ import Error from "./pages/Error";
 import getColorByIndex from "./utils/getColors";
 import getFormattedTime from "./utils/getFormatedTime";
 import getCurrentDateTimeString from "./utils/getCurrentDateTimeString";
+import getCachedCityDetails from "./utils/getCachedCityDetails";
 // Import the APIHelper module
 import APIHelper from "./api/APIHelper"; 
 
@@ -18,7 +19,7 @@ function App() {
   const fetchCityDetails = async (cityId) => {
     try {
       const weatherDetails  = await APIHelper.getWeatherDetails(cityId) // Call getWeatherDetails function from api folder
-      
+
       const cityDetail = {
         id: weatherDetails.sys.country,
         name: weatherDetails.name,
@@ -49,20 +50,7 @@ function App() {
     }
   };
 
-  const getCachedCityDetails = (cityId) => {
-    const cachedData = localStorage.getItem(`city_${cityId}`);
-
-    if (cachedData) {
-      const parsedData = JSON.parse(cachedData);
-      const currentTime = new Date().getTime();
-      const cacheExpiration = parsedData.timestamp + 5 * 60 * 1000; // 5 minutes in milliseconds
-
-      if (currentTime < cacheExpiration) {
-        return parsedData.data;
-      }
-    }
-    return null;
-  };
+  
 
   useEffect(() => {
     const fetchData = async () => {
