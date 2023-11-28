@@ -1,7 +1,9 @@
+import { DEFAULT_LOCALE } from '../constants/formattingConstants.js';
+
 //Date and current time
 function getCurrentDateTimeString() {
     const currentDate = new Date(); // Get current date and time
-    const month = currentDate.toLocaleString("default", { month: "short" }); // Get the short version of the month
+    const month = currentDate.toLocaleString(DEFAULT_LOCALE, { month: "short" }); // Get the short version of the month
     const day = currentDate.getDate();
     let hours = currentDate.getHours();
     const minutes = currentDate.getMinutes();

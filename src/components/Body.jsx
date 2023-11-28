@@ -12,7 +12,7 @@ const Body = (props) => {
       {props.allCityDetails.map((city, index) => (
           <WeatherCard
             key={index}
-            allCityDetails={city}
+            eachCityDetails={city}
             color={getColorByIndex(index)}
           />
         ))}
