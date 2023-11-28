@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const WeatherCard = (props) => {
   return (
     <div className={`weatherCard lg:h-[370px] lg:w-[550px] h-[300px] w-[385px] md:w-[450px] mb-[50px] lg:mb-0 mx-auto rounded-lg relative ${props.color ? props.color : 'blue-bg'}`}>
-      <Link to={`/${props.eachCityDetails?.name}`}>
+      <Link to={`/city/${props.eachCityDetails?.name}`}>
         <div className="top-part h-[60%] flex items-center justify-around">
           <AiOutlineClose className="absolute top-2 right-2 hover:cursor-pointer" />
           <img

@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import EachCity from "./pages/EachCity";
 import Error from "./pages/Error";
 // Imports from utils
-import getColorByIndex from "./utils/getColors";
 import getFormattedTime from "./utils/getFormatedTime";
 import getCurrentDateTimeString from "./utils/getCurrentDateTimeString";
 import getCachedCityDetails from "./utils/getCachedCityDetails";
@@ -78,10 +77,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home allCityDetails={allCityDetails} />} />
-        {/* Dynamically render each city */}
-        {allCityDetails.map((city, index) => (
-          <Route key={index} path={city?.name} element={<EachCity allCityDetails={city} color={getColorByIndex(index)} />}/>
-        ))}
+        <Route path="/city/:cityName" element={<EachCity allCityDetails={allCityDetails} />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
