@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import Search from "./Search";
-import headerCloud from "../assets/headerCloud.png"
+import headerCloud from "../assets/HeaderCloud.png"
 
 const Header = () => {
   return (
