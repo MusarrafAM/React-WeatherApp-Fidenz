@@ -3,7 +3,7 @@ import axios from "axios";
 const APIHelper = {
   getWeatherDetails: async (cityId) => {
     const api_key = process.env.REACT_APP_WEATHER_API_KEY;
-    const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${cityId}&units=metric&appid=${api_key}`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/group?id=${cityId}&units=metric&appid=${api_key}`;
 
     try {
       const res = await axios.get(apiUrl);
